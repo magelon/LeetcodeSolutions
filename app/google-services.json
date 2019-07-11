@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "827153106530",
+    "firebase_url": "https://leetcodesolution-8cff6.firebaseio.com",
+    "project_id": "leetcodesolution-8cff6",
+    "storage_bucket": "leetcodesolution-8cff6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:827153106530:android:38a9250830b9e06e",
+        "android_client_info": {
+          "package_name": "com.lon.ls.leetcodesolutions"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "827153106530-4kvum3ic24baj53lbi0q7dgbq3353gl6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.lon.ls.leetcodesolutions",
+            "certificate_hash": "59c31e2a17767d15fde3efff1dd6930f67069f70"
+          }
+        },
+        {
+          "client_id": "827153106530-q6dk7l37j10hc4tkan9ud50ngjjeph1d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAkIdltbUxdd_qq1suJCiudQBfR44Et1No"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "827153106530-q6dk7l37j10hc4tkan9ud50ngjjeph1d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
