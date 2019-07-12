@@ -18,6 +18,10 @@ import android.view.MenuItem;
 public class MainPage extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    private RecyclerView problem_recyclerView;
+    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.LayoutManager layoutManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,10 +29,24 @@ public class MainPage extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        RecyclerView problem_recyclerView=findViewById(R.id.problem_recycler);
-        problem_recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        problem_recyclerView=(RecyclerView)findViewById(R.id.problem_recycler);
 
-      
+        // use this setting to improve performance if you know that changes
+        // in content do not change the layout size of the RecyclerView
+        //problem_recyclerView.setHasFixedSize(true);
+
+       problem_recyclerView.setLayoutManager(layoutManager);
+
+
+
+        String[] myDataset={"aa","bb","cc"};
+        // specify an adapter (see also next example)
+        mAdapter = new MyAdapter(myDataset);
+        //problem_recyclerView.setAdapter(mAdapter);
+
+
+
+
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
