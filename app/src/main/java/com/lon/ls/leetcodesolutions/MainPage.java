@@ -37,7 +37,7 @@ public class MainPage extends AppCompatActivity
 
        problem_recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        String[] myDataset={"aa","bb","cc"};
+        String[] myDataset={"aa","bb","cc","dd","as","adaf","afsd","qerqwe","qweqr","aa","bb","cc","dd","as","adaf","afsd","qerqwe","qweqr"};
         // specify an adapter (see also next example)
         mAdapter = new MyAdapter(myDataset);
         problem_recyclerView.setAdapter(mAdapter);

@@ -29,6 +29,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     public MyAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent,
                                                      int viewType) {
         // create a new view
+
         TextView v = (TextView) LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.problem_text_view, parent, false);
         MyViewHolder vh = new MyViewHolder(v);
@@ -41,7 +42,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
         holder.textView.setText(mDataset[position]);
-
     }
 
     // Return the size of your dataset (invoked by the layout manager)
