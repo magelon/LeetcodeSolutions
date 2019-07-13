@@ -8,6 +8,8 @@
     tools:context=".MainPage"
     tools:showIn="@layout/app_bar_main_page">
 
+    <include layout="@layout/problems" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

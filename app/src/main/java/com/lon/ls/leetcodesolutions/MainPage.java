@@ -20,7 +20,7 @@ public class MainPage extends AppCompatActivity
 
     private RecyclerView problem_recyclerView;
     private RecyclerView.Adapter mAdapter;
-    private RecyclerView.LayoutManager layoutManager;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,17 +35,12 @@ public class MainPage extends AppCompatActivity
         // in content do not change the layout size of the RecyclerView
         //problem_recyclerView.setHasFixedSize(true);
 
-       problem_recyclerView.setLayoutManager(layoutManager);
-
-
+       problem_recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         String[] myDataset={"aa","bb","cc"};
         // specify an adapter (see also next example)
         mAdapter = new MyAdapter(myDataset);
-        //problem_recyclerView.setAdapter(mAdapter);
-
-
-
+        problem_recyclerView.setAdapter(mAdapter);
 
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
