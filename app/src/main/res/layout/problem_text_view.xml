@@ -11,6 +11,8 @@
     android:id="@+id/problem_text"
     android:text="Hello World!"
     android:textSize="30sp"
+    android:onClick="onClick"
+    android:clickable="true"
     >
 </TextView>
 

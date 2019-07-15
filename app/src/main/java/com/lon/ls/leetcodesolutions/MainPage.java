@@ -1,5 +1,6 @@
 package com.lon.ls.leetcodesolutions;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -14,6 +15,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 public class MainPage extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -62,6 +64,24 @@ public class MainPage extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
     }
 
+    public void onClick(View v) {
+        int id=v.getId();
+
+        if(id==R.id.problem_text){
+            // get the text to pass
+            TextView tv=(TextView)v;
+            String problem=tv.getText().toString();
+
+            //EditText editText = (EditText) findViewById(R.id.editText);
+            //String textToPass = editText.getText().toString();
+
+            // start the SecondActivity
+            Intent intent = new Intent(this, problem_detail.class);
+            intent.putExtra(Intent.EXTRA_TEXT, problem);
+            startActivity(intent);
+        }
+    }
+
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -93,6 +113,8 @@ public class MainPage extends AppCompatActivity
 
         return super.onOptionsItemSelected(item);
     }
+
+
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
