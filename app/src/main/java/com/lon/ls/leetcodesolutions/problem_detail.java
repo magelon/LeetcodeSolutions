@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.support.annotation.NonNull;
+import android.text.Html;
 import android.view.MenuItem;
 import android.widget.TextView;
 
@@ -46,6 +47,7 @@ public class problem_detail extends AppCompatActivity {
         // use the text in a TextView
         TextView textView = (TextView) findViewById(R.id.message);
         textView.setText(text);
+        textView.setText(Html.fromHtml("<pre><code> Your Code </code></pre>"));
 
     }
 
