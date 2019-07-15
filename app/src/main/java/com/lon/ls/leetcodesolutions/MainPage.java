@@ -24,6 +24,11 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.lon.ls.leetcodesolutions.data.model.Post;
+
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 public class MainPage extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -52,13 +57,30 @@ public class MainPage extends AppCompatActivity
 
        problem_recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+
+       final List<Post> postList=new ArrayList<>();
         // Read from the database
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                postList.clear();
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
                 String value = dataSnapshot.getValue(String.class);
+
+                for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
+                    Post post=new Post();
+                    post.uid=postSnapshot.getKey();
+
+                    post.title=(String)postSnapshot.child("title").getValue();
+
+                    post.stars=(int)postSnapshot.child("starts").getValue();
+
+                    postList.add(post);
+
+                    // here you can access to name property like university.name
+
+                }
 
                 //Log.d(, "Value is: " + value);
             }
