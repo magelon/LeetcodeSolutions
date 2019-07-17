@@ -90,7 +90,7 @@ public class MainPage extends AppCompatActivity
 
                 mAdapter.notifyDataSetChanged();
 
-                
+
                 //Log.d(, "Value is: " + value);
             }
 
