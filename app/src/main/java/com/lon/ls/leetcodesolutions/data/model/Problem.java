@@ -1,4 +1,4 @@
-package com.lon.ls.leetcodesolutions;
+package com.lon.ls.leetcodesolutions.data.model;
 
 public class Problem {
 

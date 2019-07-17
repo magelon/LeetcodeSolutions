@@ -13,7 +13,12 @@
     android:textSize="30sp"
     android:onClick="onClick"
     android:clickable="true"
+    android:padding="@dimen/activity_horizontal_margin"
     >
+
+
+
 </TextView>
+
 
 

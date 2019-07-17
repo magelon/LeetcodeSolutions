@@ -5,9 +5,11 @@ import android.os.Bundle;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.view.MenuItem;
 import android.widget.TextView;
+
 
 public class problem_detail extends AppCompatActivity {
     private TextView mTextMessage;
@@ -36,6 +38,13 @@ public class problem_detail extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_problem_detail);
+
+        Toolbar topToolBar=findViewById(R.id.toolbar_det);
+        setSupportActionBar(topToolBar);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
         BottomNavigationView navView = findViewById(R.id.nav_view);
         mTextMessage = findViewById(R.id.message);
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
@@ -47,8 +56,14 @@ public class problem_detail extends AppCompatActivity {
         // use the text in a TextView
         TextView textView = (TextView) findViewById(R.id.message);
         textView.setText(text);
-        textView.setText(Html.fromHtml("<pre><code> Your Code </code></pre>"));
+        //textView.setText(Html.fromHtml("<pre><code> Your Code </code></pre>"));
 
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 
 }
