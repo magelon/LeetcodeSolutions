@@ -42,6 +42,10 @@ public class MainPage extends AppCompatActivity
     DatabaseReference myRef = database.getReference("problems");
 
 
+     ArrayList<Post> postList=new ArrayList<>();
+
+     String[] myDataset=new String[20];
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,8 +61,6 @@ public class MainPage extends AppCompatActivity
 
        problem_recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-
-       final List<Post> postList=new ArrayList<>();
         // Read from the database
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -66,7 +68,7 @@ public class MainPage extends AppCompatActivity
                 postList.clear();
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
-                String value = dataSnapshot.getValue(String.class);
+                //String value = dataSnapshot.getValue(String.class);
 
                 for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
                     Post post=new Post();
@@ -74,10 +76,11 @@ public class MainPage extends AppCompatActivity
 
                     post.title=(String)postSnapshot.child("title").getValue();
 
-                    post.stars=(int)postSnapshot.child("starts").getValue();
+//                  post.stars=(int)postSnapshot.child("starts").getValue();
 
                     postList.add(post);
 
+                    Log.v("MainPage", "puid: "+post.title);
                     // here you can access to name property like university.name
 
                 }
@@ -90,14 +93,13 @@ public class MainPage extends AppCompatActivity
                 // Failed to read value
                 //Log.w(TAG, "Failed to read value.", error.toException());
             }
+
         });
 
-
-        String[] myDataset={"aa","bb","cc","dd","as","adaf","afsd","qerqwe","qweqr","aa","bb","cc","dd","as","adaf","afsd","qerqwe","qweqr"};
         // specify an adapter (see also next example)
-        mAdapter = new MyAdapter(myDataset);
-        problem_recyclerView.setAdapter(mAdapter);
+        mAdapter = new MyAdapter(postList);
 
+        problem_recyclerView.setAdapter(mAdapter);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {

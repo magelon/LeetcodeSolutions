@@ -3,8 +3,8 @@ package com.lon.ls.leetcodesolutions.data.model;
 
 import java.util.HashMap;
 import java.util.Map;
-
-public class Post {
+  import java.io.Serializable;
+public class Post implements Serializable {
 
     public String uid;
     public String author;
