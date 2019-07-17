@@ -23,7 +23,7 @@ import com.lon.ls.leetcodesolutions.data.model.Problem;
 
 public class Problem_detail extends AppCompatActivity {
     private TextView mTextMessage;
-
+    Problem problem=new Problem();
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference("problems");
 
@@ -34,10 +34,10 @@ public class Problem_detail extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-                    mTextMessage.setText(R.string.title_home);
+                    mTextMessage.setText(problem.getDes());
                     return true;
                 case R.id.navigation_dashboard:
-                    mTextMessage.setText(R.string.title_dashboard);
+                    mTextMessage.setText(problem.getSolutioin());
                     return true;
                 case R.id.navigation_notifications:
                     mTextMessage.setText(R.string.title_notifications);
@@ -75,9 +75,15 @@ public class Problem_detail extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // Get Post object and use the values to update the UI
-                    Problem problem=new Problem();
+
                  problem.setTitle((String)dataSnapshot.child("title").getValue());
+                 problem.setDes((String)dataSnapshot.child("body").getValue());
+                 problem.setSolutioin((String)dataSnapshot.child("solution").getValue());
+
                  Log.v("Problem_detail","title "+problem.getTitle());
+                // use the text in a TextView
+                TextView textView = (TextView) findViewById(R.id.message);
+                textView.setText(problem.getDes());
 
             }
 
@@ -89,10 +95,7 @@ public class Problem_detail extends AppCompatActivity {
         };
         myRef.addValueEventListener(postListener);
 
-        // use the text in a TextView
-        TextView textView = (TextView) findViewById(R.id.message);
-        textView.setText(text);
-        //textView.setText(Html.fromHtml("<pre><code> Your Code </code></pre>"));
+
     }
 
     @Override
