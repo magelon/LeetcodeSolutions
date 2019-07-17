@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
-            android:name=".problem_detail"
+            android:name=".Problem_detail"
             android:label="@string/title_activity_problem_detail"></activity>
         <activity
             android:name=".MainPage"

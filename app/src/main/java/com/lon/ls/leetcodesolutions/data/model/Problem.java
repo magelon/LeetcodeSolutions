@@ -16,9 +16,6 @@ public class Problem {
         this.tags = tags;
     }
 
-
-
-
     public String getTitle() {
         return title;
     }
@@ -50,6 +47,8 @@ public class Problem {
     public void setImg(String img) {
         this.img = img;
     }
+
+    public Problem(){}
 
     public Problem(String title, String des, String solutioin,String img,String tags) {
         this.title = title;

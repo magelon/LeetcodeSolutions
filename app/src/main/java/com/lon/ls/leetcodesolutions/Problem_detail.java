@@ -7,12 +7,25 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.lon.ls.leetcodesolutions.data.model.Post;
+import com.lon.ls.leetcodesolutions.data.model.Problem;
 
-public class problem_detail extends AppCompatActivity {
+
+public class Problem_detail extends AppCompatActivity {
     private TextView mTextMessage;
+
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference myRef = database.getReference("problems");
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -53,11 +66,33 @@ public class problem_detail extends AppCompatActivity {
         Intent intent = getIntent();
         String text = intent.getStringExtra(Intent.EXTRA_TEXT);
 
+        //getProblem info from firebase using text
+        // Read from the database
+
+        myRef = database.getReference("problems/"+text);
+
+        ValueEventListener postListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // Get Post object and use the values to update the UI
+                    Problem problem=new Problem();
+                 problem.setTitle((String)dataSnapshot.child("title").getValue());
+                 Log.v("Problem_detail","title "+problem.getTitle());
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Getting Post failed, log a message
+
+            }
+        };
+        myRef.addValueEventListener(postListener);
+
         // use the text in a TextView
         TextView textView = (TextView) findViewById(R.id.message);
         textView.setText(text);
         //textView.setText(Html.fromHtml("<pre><code> Your Code </code></pre>"));
-
     }
 
     @Override

@@ -130,13 +130,20 @@ public class MainPage extends AppCompatActivity
             TextView tv=(TextView)v;
             String problem=tv.getText().toString();
 
+            String uid;
+
+            for(int i=0;i<postList.size();i++){
+                if(postList.get(i).title.toString()==problem){
+                    uid=postList.get(i).uid;
+                    // start the SecondActivity
+                    Intent intent = new Intent(this, Problem_detail.class);
+                    intent.putExtra(Intent.EXTRA_TEXT, uid);
+                    startActivity(intent);
+                }
+            }
             //EditText editText = (EditText) findViewById(R.id.editText);
             //String textToPass = editText.getText().toString();
 
-            // start the SecondActivity
-            Intent intent = new Intent(this, problem_detail.class);
-            intent.putExtra(Intent.EXTRA_TEXT, problem);
-            startActivity(intent);
         }
     }
 
