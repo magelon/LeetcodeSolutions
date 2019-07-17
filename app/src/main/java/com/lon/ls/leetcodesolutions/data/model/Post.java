@@ -4,7 +4,7 @@ package com.lon.ls.leetcodesolutions.data.model;
 import java.util.HashMap;
 import java.util.Map;
   import java.io.Serializable;
-public class Post implements Serializable {
+public class Post {
 
     public String uid;
     public String author;

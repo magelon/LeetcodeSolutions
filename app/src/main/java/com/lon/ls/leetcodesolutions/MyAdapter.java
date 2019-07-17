@@ -8,9 +8,10 @@ import android.widget.TextView;
 import com.lon.ls.leetcodesolutions.data.model.Post;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
-    private ArrayList<Post> mDataset;
+    private List<Post> mDataset;
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
     // you provide access to all the views for a data item in a view holder
@@ -24,7 +25,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public MyAdapter(ArrayList<Post> myDataset) {
+    public MyAdapter(List<Post> myDataset) {
         mDataset = myDataset;
     }
 

@@ -42,9 +42,7 @@ public class MainPage extends AppCompatActivity
     DatabaseReference myRef = database.getReference("problems");
 
 
-     ArrayList<Post> postList=new ArrayList<>();
-
-     String[] myDataset=new String[20];
+     List<Post> postList=new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,6 +83,14 @@ public class MainPage extends AppCompatActivity
 
                 }
 
+                // specify an adapter (see also next example)
+                mAdapter = new MyAdapter(postList);
+
+                problem_recyclerView.setAdapter(mAdapter);
+
+                mAdapter.notifyDataSetChanged();
+
+                
                 //Log.d(, "Value is: " + value);
             }
 
@@ -96,10 +102,7 @@ public class MainPage extends AppCompatActivity
 
         });
 
-        // specify an adapter (see also next example)
-        mAdapter = new MyAdapter(postList);
 
-        problem_recyclerView.setAdapter(mAdapter);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
