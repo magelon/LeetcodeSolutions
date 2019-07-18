@@ -27,6 +27,8 @@ public class Problem_detail extends AppCompatActivity {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference("problems");
 
+    String resultText="<p>";
+
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
@@ -34,7 +36,7 @@ public class Problem_detail extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-                    mTextMessage.setText(problem.getDes());
+                    mTextMessage.setText(Html.fromHtml(resultText));
                     return true;
                 case R.id.navigation_dashboard:
                     mTextMessage.setText(problem.getSolutioin());
@@ -83,7 +85,20 @@ public class Problem_detail extends AppCompatActivity {
                  Log.v("Problem_detail","title "+problem.getTitle());
                 // use the text in a TextView
                 TextView textView = (TextView) findViewById(R.id.message);
-                textView.setText(problem.getDes());
+
+                int len=problem.getDes().length();
+
+                for(int i=0;i<len;i++){
+                    if(problem.getDes().charAt(i)=='.'||problem.getDes().charAt(i)==':'){
+                        resultText+="</p><p>";
+                    }else{
+                        resultText+=problem.getDes().charAt(i);
+                    }
+                }
+
+                textView.setText(Html.fromHtml(resultText));
+                problem.setDes(resultText);
+                //textView.setText(problem.getDes());
 
             }
 
