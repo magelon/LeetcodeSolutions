@@ -28,6 +28,7 @@ public class Problem_detail extends AppCompatActivity {
     DatabaseReference myRef = database.getReference("problems");
 
     String resultText="<p>";
+    String resultText2="<p>";
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -39,7 +40,7 @@ public class Problem_detail extends AppCompatActivity {
                     mTextMessage.setText(Html.fromHtml(resultText));
                     return true;
                 case R.id.navigation_dashboard:
-                    mTextMessage.setText(problem.getSolutioin());
+                    mTextMessage.setText(Html.fromHtml(resultText2));
                     return true;
                 case R.id.navigation_notifications:
                     mTextMessage.setText(R.string.title_notifications);
@@ -90,9 +91,23 @@ public class Problem_detail extends AppCompatActivity {
 
                 for(int i=0;i<len;i++){
                     if(problem.getDes().charAt(i)=='.'||problem.getDes().charAt(i)==':'){
-                        resultText+="</p><p>";
+                        resultText+=":</p><p>";
                     }else{
                         resultText+=problem.getDes().charAt(i);
+                    }
+                }
+
+                int len2=problem.getSolutioin().length();
+
+                for(int i=0;i<len2;i++){
+                    if(problem.getSolutioin().charAt(i)==';'){
+                        resultText2+=";</p><p>";
+                    }else if(problem.getSolutioin().charAt(i)=='{'){
+                        resultText2+="{</p><p>";
+                    }else if(i==len2-1){
+                        resultText2+="</p>";
+                    }else{
+                        resultText2+=problem.getSolutioin().charAt(i);
                     }
                 }
 
