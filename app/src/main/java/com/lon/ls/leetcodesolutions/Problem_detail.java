@@ -27,7 +27,7 @@ public class Problem_detail extends AppCompatActivity {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference("problems");
 
-    String resultText="<p>";
+    String resultText="";
     String resultText2="<p>";
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -86,19 +86,19 @@ public class Problem_detail extends AppCompatActivity {
                  Log.v("Problem_detail","title "+problem.getTitle());
                 // use the text in a TextView
                 TextView textView = (TextView) findViewById(R.id.message);
-
                 int len=problem.getDes().length();
-
                 for(int i=0;i<len;i++){
-                    if(problem.getDes().charAt(i)=='.'||problem.getDes().charAt(i)==':'){
+                    if(problem.getDes().charAt(i)==':'){
                         resultText+=":</p><p>";
+                    }else if(problem.getDes().charAt(i)=='.'){
+                        resultText+=".</p><p>";
+                    }else if(i==len-1){
+                        resultText+="</P>";
                     }else{
                         resultText+=problem.getDes().charAt(i);
                     }
                 }
-
                 int len2=problem.getSolutioin().length();
-
                 for(int i=0;i<len2;i++){
                     if(problem.getSolutioin().charAt(i)==';'){
                         resultText2+=";</p><p>";
@@ -110,22 +110,16 @@ public class Problem_detail extends AppCompatActivity {
                         resultText2+=problem.getSolutioin().charAt(i);
                     }
                 }
-
                 textView.setText(Html.fromHtml(resultText));
                 problem.setDes(resultText);
                 //textView.setText(problem.getDes());
-
             }
-
             @Override
             public void onCancelled(DatabaseError databaseError) {
                 // Getting Post failed, log a message
-
             }
         };
         myRef.addValueEventListener(postListener);
-
-
     }
 
     @Override
